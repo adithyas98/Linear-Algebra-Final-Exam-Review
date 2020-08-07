@@ -1,0 +1,480 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% writeLaTeX Example: A quick guide to LaTeX
+%
+% Source: Dave Richeson (divisbyzero.com), Dickinson College
+% 
+% A one-size-fits-all LaTeX cheat sheet. Kept to two pages, so it 
+% can be printed (double-sided) on one piece of paper
+% 
+% Feel free to distribute this example, but please keep the referral
+% to divisbyzero.com
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,landscape]{article}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multicol,multirow}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{graphicx}
+
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+% -----------------------------------------------------------------------
+
+\title{A quick guide to LaTeX}
+
+\begin{document}
+
+\raggedright
+\footnotesize
+
+\begin{center}
+     \Large{\textbf{Linear Algebra Final Exam Review}} \\
+\end{center}
+\begin{multicols}{3}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+
+\section{Reduced Row Echelon Form}
+This is a reduced matrix that will give you the ability to solve systems of equations. There are a few rules that need to be followed.
+\begin{itemize}
+    \item The first non-zero entry must be a 1
+    \item All numbers in the same column as a leading 1 must be a 0
+    \item Leading 1 on a next row must be shifted one position to the right
+\end{itemize}{}
+If a reduced matrix follows all of these rules, then you have found a solution to the system of equations. You first start with an augmented matrix, this is where you take all of the coefficients and put them in a matrix.
+
+\subsection{Rules for finding solutions to a system of equations}
+Here we will use a term called the rank of a matrix in its rref form. The rank of this type of a matrix is the number of leading 1s the matrix has. For an $n \times m$ matrix A, where $n$ is the number of rows and $m$ is the number of columns in the matrix. The following conditions hold true if met:
+\begin{itemize}
+    \item if $m<n$ or $m>n$, there are infinitely many solutions or no solutions because you have either too many variables(columns) or too few variables(columns).
+    \item if $n=m$ then there is a unique solution if $rank(A)=n$.
+\end{itemize}{}
+
+\section{Linear Transformations}
+A transformation is considered to be linear if the following two conditions are met. 
+\begin{itemize}
+    \item T(\Vec{v}+\Vec{w})=T(\Vec{v})+T(\Vec{w})
+    \item T(k\Vec{w})=kT(\Vec{w})
+\end{itemize}{}
+Where $k\epsilon \mathbb{R}$ and $\Vec{w},\Vec{v} \epsilon \mathbb{R}^n$
+
+
+\section{Matrices}
+Now we will talk about matrices and their properties. For our discussion, let's assume all matrices are $n \times n$, unless otherwise stated.
+
+\subsection{Properties of Matrices}
+
+
+
+\begin{itemize}
+    \item $AB$ may not equal $BA$
+    \item $(AB)C=A(BC)$ only if the order is maintained
+    \item $k(AB)=(kA)B=A(kB)$
+    \item If A is an $n \times m$ matrix and we let $I_n$ and $I_m$ be $n \times n$ and $\m \times m$ matrices respectively, then $AI_m=A=I_nA$
+\end{itemize}{}
+Where $A,B,C \epsilon \mathbb{R}^{n \times n}$ and $k \epsilon \mathbb{R}$
+
+\subsection{Multiplying Matrices with Vectors}
+You basically multiply the vector's components by the corresponding components in the row of a matrix then add them together and place it in the corresponding position of the vector. 
+
+\begin{equation*}
+    \begin{bmatrix}
+    a&b\\
+    c&d
+    \end{bmatrix}
+    \begin{bmatrix}{}
+    x_1\\
+    x_2
+    \end{bmatrix}
+    =
+    \begin{bmatrix}{}
+    ax_1+bx_2\\
+    cx_1+dx_2
+    
+    \end{bmatrix}
+\end{equation*}{}
+
+\subsection{Multiplying Matrices}
+This is basically like multiplying a matrix by a bunch of vectors, the columns in the other row
+\begin{equation*}
+    \begin{bmatrix}
+    a&b\\
+    c&d
+    \end{bmatrix}
+    \begin{bmatrix}{}
+    x_1&x_2\\
+    x_3&x_4\\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}{}
+    ax_1+bx_3&ax_2+bx_4\\
+    cx_1+dx_3&cx_2+dx_4\\
+    \end{bmatrix}
+\end{equation*}{}
+Notice that the columns of one must math the rows of the other and that a $n\times m$ multiplied by a $m\times n$ gives an $n\times n$ matrix
+
+\subsection{The Kernel}
+The kernel represents a set of all vectors that when transformed by a matrix, go to 0. You can find the kernel by finding the rref of the matrix and setting up equations, from each row. Then with these equations, you will need to set variables equal to an arbitrary constant. The number of variables you need to do this for is equal to the number of columns that have non-zero numbers in them or are not following the rules for rref. With these you should be able to solve for all the other variables. Then construct your vectors to form your basis. You should have a separate vector for every variable you have set to be an arbitrary constant. Here are some facts about the kernel:
+\begin{itemize}
+    \item $\vec{0}$ is always in the kernel
+    \item if $\vec{u}$ and $\vec{v}$ are in the kernel, then so is $\vec{v}+\vec{u}$
+    \item if $\vec{u}$ is in the kernel, then so is $k\vec{u}$
+\end{itemize}{}
+\subsection{Image}
+The image is all of the vectors that a matrix outputs after a transformation. This is found by simply multiplying the matrix by an arbitrary vector.  But, make sure they are linearly independent vectors! You can check this by taking the rref of the matrix, and looking at the columns that have leading 1s. The corresponding columns in the original matrix will be in the image of the matrix, the other columns, not having leading 1s, will be in the kernel of the matrix.g
+
+\begin{equation*}
+    \begin{bmatrix}
+    a&b\\
+    c&d
+    \end{bmatrix}
+    \begin{bmatrix}
+    x_1\\
+    x_2
+    \end{bmatrix}
+    =
+    x_1\begin{bmatrix}
+    a\\
+    c
+    \end{bmatrix}
+    +
+    x_2
+    \begin{bmatrix}
+    b\\
+    d
+    \end{bmatrix}
+\end{equation*}{}
+Here are some facts about the image
+\begin{itemize}
+    \item $\vec{0}$ is always in the image
+    \item if $\vec{u}$ and $\vec{v}$ are in the image, then so is $\vec{v}+\vec{u}$
+    \item if $\vec{u}$ is in the image, then so is $k\vec{u}$
+\end{itemize}{}
+\subsection{Types of Transformations}
+Here are a list of possible transformations:
+\begin{itemize}
+    \item Orthogonal Projection
+    \begin{bmatrix}
+    u^2&uv\\
+    uv&v^2
+    \end{bmatrix}
+    Where $\begin{bmatrix}u\\v\end{bmatrix}$ is unit vector
+    \item horizontal shear$
+        \begin{bmatrix}
+    1&k\\
+    0&1
+    \end{bmatrix}$
+    Where $k$ is a constant
+    \item Vertical Shear
+       $ \begin{bmatrix}
+    1&0\\
+    k&1
+    \end{bmatrix}$
+    \item Scaling$
+        \begin{bmatrix}
+    k&0\\
+    0&k
+    \end{bmatrix}$
+    Where $k\epsilon \mathbb{R}$
+    \item Rotation$
+        \begin{bmatrix}
+    \cos{\theta}&-\sin{\theta}\\
+    \sin{\theta}&\cos{\theta}
+    \end{bmatrix}$
+\end{itemize}{}
+
+
+\subsection{Inverse of a Matrix}
+To find an inverse of a matrix, augment the matrix with the identity matrix of the same size. Then find the rref, the side where you put the identity matrix will give you the inverse of the matrix you started with.
+
+
+
+
+
+
+\subsection{Invertibility Rules}
+If A is an $n \times n$ matrix, then the following holds true:
+\begin{itemize}
+    \item A is invertible
+    \item $rank(A)=n$
+    \item $rref(A)=I_n$
+    \item There exists a unique solution for $A\vec{x}=\vec{y}$ for $\vec{y}\epsilon \mathbb{R}^n$
+    \item Kernel of A is the set of the zero vector
+    \item Image of A is $\mathbb{R}^n$
+    \item The determinant of A does not equal 0
+    \item if A and B are invertible, then so is AB
+\end{itemize}
+
+
+\section{Linear Sub-spaces}
+
+A set of vectors forms a linear subspace,$W$, if the following conditions are met:
+\begin{itemize}
+    \item The zero vector is in W
+    \item $\vec{u}$ and $\vec{v}$ are in $W$, then so is $\vec{v}+\vec{u}$
+    \item if $\vec{u}$ is in $W$, then so is $k\vec{u}$, where $k \epsilon \mathbb{R}$
+\end{itemize}{}
+\subsection{Basis of a subset}
+The basis of a subset is a set of the fewest number of vectors that can span the entire subspace through just linear combinations(Sum of the scalar multiples of the vector).These vectors have to linearly independent.
+\begin{equation*}
+    r_1\vec{v_1}+r_2\vec{v_2}+...+r_p\vec{v_p}=0
+\end{equation*}{}
+No, you can just make all of the constant equal 0, that would be too easy, thus trivial. So there can't be a trivial result in order for the vectors to be linearly independent.
+
+\subsection{Rank-Nullity Theorem}
+For an $n \times m$ matrix A,
+\begin{equation*}
+    dim(ker(A))+dim(Img(A))=m
+\end{equation*}{}
+
+This basically says that all of the variables either need to transferred correctly to after the transformation or that if they are not they need to go into the kernel.
+
+\section{Vector Spaces}
+It turns out that vectors can be defined to be anything, just as long as they follow these rules:
+\begin{itemize}
+    \item Commutative property holds under addition
+    \item The associative property holds true for addition
+    \item There is a zero value
+    \item You need to have some vector that when added to another vector gives you zero. Basically, you need a negative number LOL!
+    \item Scalars need to distribute across addition
+    \item Vectors need to distribute across addition
+    \item Associative property holds true for multiplication
+    \item You need to have a vector that when multiplied to another vector, gives the other vector back. Basically, you need a 1.
+\end{itemize}{}
+
+Here are some facts about Vector Spaces
+\begin{itemize}
+    \item A vector $v \epsilon V$ is a linear combination in $v_1,v_2,..., v_n \epsilon V$ if there exists scalars $c_1,c_2,..,c_n$ such that $v=c_1v_1+c_2v_2+...+c_nv_n$
+    \item Dimension of a Subspace is the number of vectors in any basis for V
+\end{itemize}{}
+
+\section{Change of Coordinates}
+The figure below shows the change of basis diagram. You can basically generate formulas based on this diagram and be able to get from one place to another.
+\begin{equation*}
+    \begin{matrix}{}
+    &&A\\
+    &\mathbb{R}^n&\longrightarrow&T(\mathbb{R}^n)\\
+    S^{-1}&\vdots& &\vdots&S^{-1}\\
+   & \mathbb{R_B}^n&\longrightarrow&T(\mathbb{R_B}^n)\\
+   &&G\\
+    \end{matrix}
+\end{equation*}{}
+Here $S$ is the matrix transformation that will take you from one basis to another. $A$ is some transformation matrix. $G$ is given by transforming the basis vectors of $\mathbb{B}$, with $A$ and converting vectors you get after the transformation to the new basis by multiplying by $S^{-1}$. Doing this sort of transformation comes in handy when doing lengthy calculations, such as taking a very high power of a matrix. 
+Here are some important formulas to keep in mind. 
+\begin{itemize}
+    \item $AS=SG$
+    \item $G=S^{-1}AS$
+    \item $A=SGS^{-1}$
+\end{itemize}{}
+Also, remember that two matrices are similar if the $G=S^{-1}AS$ holds true given that $S$ is invertible.
+
+\section{Matrix of Transformation}
+This is where you take abstract vector spaces and apply the change of coordinates diagram.This is done by the following steps:
+\begin{itemize}
+    \item[1] Create an isomorphism, an invertible matrix that can transform abstract vectors to actual vectors
+    \item[2] Transform the Basis of the Abstract vectors space through the given Transformation
+    \item[3] Then convert the transformed abstract vector basis to the actual vector basis using the transformation in step 1. Then you will have your matrix of transformation once you concatenate the vectors to form a matrix.
+\end{itemize}{}
+
+\section{Orthonormal Basis}
+This is where you make a basis that is both orthogonal and normal. That is each vector is perpendicular to every other vector and each vector has a magnitude of one. A matrix that consists of orthonormal vectors are called orthogonal matrices. Here are some facts about Orthogonal Matrices:
+\begin{itemize}
+    \item There, can't be more than $n$ orthonormal vectors in a set that is supposed to span $\mathbb{R}^n$
+    \item Any set of $n$ orthonormal vectors form a basis of $\mathbb{R}^n$
+    \item Any subspace $V$ of $\mathbb{R}^n$ has an orthonormal basis
+    \item Orthogonal Transformations preserve length
+\end{itemize}{}
+
+\subsection{Graham Scmitt Process}
+This is how you actually find an orthonormal basis given a regular(doesn't mean anything mathematical in this instance) basis. The steps are listed below for a given set of vectors $\vec{v_1},\vec{v_2},..., \vec{v_n}$
+\begin{itemize}
+    \item[1] Replace $\vec{v_1}$ with $\frac{\vec{v_1}}{||\vec{v_1}||}=\vec{u}$
+    \item[2] $\vec{V_2}^{\perp} $ then replace $\vec{v_2}$ with $\vec{u_2}=\frac{\vec{v_2}}{||\vec{v_2}||}$ In order to do so, use these formulas
+    \begin{equation*}
+        \vec{x}^{||}=proj_v(\vec{x})=(\vec{u_1} \cdot \vec{x})\vec{u_1}+...+(\vec{u_n} \cdot \vec{x})\vec{u_n}
+    \end{equation*}{}
+    This is to then find the perpendicular:
+    \begin{equation*}
+        \vec{x}^{\perp}=\vec{x}-\vec{x}^{||}
+    \end{equation*}{}
+    \item[3] Find $\vec{v_3}$ using $\vec{u_1}$ and $\vec{u_2}$ then replace $\vec{v_3}$ with $\vec{u_3}=\frac{\vec{v_3}}{||\vec{v_3}||}$
+\end{itemize}{}
+
+\subsection{QR factorization}
+The QR factorization is a way to write an orthogonal matrix as a product of two matrices, like shown below.
+\begin{equation*}
+    M=QR
+\end{equation*}{}
+Where $M$ is the orthogonal matrix that you get after doing graham-scmitt, $Q$ is the original matrix you start with, and $R$ is the weird one described below. 
+\begin{itemize}
+    \item The diagonals are the magnitudes of $\vec{v_1},\vec{v_2},...,\vec{v_n}$
+    \item The part below the diagonal is all zero!
+    \item The the rest of the positions are the dot products you took to convert each $\vec{v_n}$ to $\vec{u_n}$ in step 2 and 3.
+\end{itemize}{}
+\section{Transpose}
+The transpose is an operation you can do on the matrix that changes the layout. This operation is given by the following equation:
+
+\begin{equation*}
+    A_{ij}=A_{ji}^T
+\end{equation*}{}
+Basically, you reflect the elements across the diagonal. 
+
+\subsection{Properties of the Transpose}
+Here are the properties of the transpose:
+\begin{itemize}
+    \item $(A+B)^T=A^T+B^T$
+    \item $(kA)^T=kA^T$
+    \item $(AB)^T=B^TA^T$
+    \item $rank(A^T)=rank(A)$
+    \item $det(A)=det(A^T)$
+    \item $(A^T)^{-1}=(A^{-1})^T$
+    \item $A^T A=I_n$
+\end{itemize}{}
+
+\section{Determinants}
+We know how to take determinants for $2 \times 2$ matrices , but you take the determinant of larger matrices using the following steps. 
+\begin{itemize}
+    \item[1] Pick a column or row
+    \item[2] Look at the first element and remove the column/row that the element is in.
+    \item[3] Find the determinant of the rest of the matrix not being excluded.
+    \item[4] Then multiply the determinant from step 2 with the element being covered.
+    \item[5] Then multiply by $(-1)^{j+i}$ where $i$ is the row position and $j$ is the column position
+    \item[6] Repeat steps 1 through 5 for all elements in the row or column picked in step 1. 
+\end{itemize}{}
+
+Here are some properties of the determinant:
+\begin{itemize}
+    \item The determinant of a diagonal matrix is the product of the diagonal elements
+    \item The determinant of a upper and lower is the product of the diagonal elements
+    \item Multiply the determinant by $-1$ for every row switch you make in the matrix
+    \item If an column is duplicated, the determinant becomes zero
+    \item If you multiply a row by a scalar $k$, then you will get the determinant multiplied by $k$. If you multiply multiple rows by $k$, then simply multiply the determinant by $k^n$ where $n$ is the number of rows you scale by $k$
+    \item $det(A^T)=det(A)$
+    \item If a column or row is a multiple of another row or column respectively, then the determinant is zero
+    \item $det(S)=\frac{1}{det(S^{-1}}$
+    \item If $A$ and $B$ are similar then, $det(A)=det(B)$
+    \item $det(AB)=det(A)det(B)$
+    \item Adding a multiple of one row to another, will not change the determinant
+\end{itemize}
+
+\section{Adjoint}
+The adjoint is found by taking the co factor and placing the co factor in each position of the new matrix, in the same position that was picked when finding the co factor. With this new matrix, if you take the transpose of the matrix, you will have the adjoint. This is given by this formula
+\begin{align*}
+    C_{ij}&=(-1)^{i+1} det(A_{ij})\\
+    C&=adj(A)\\
+\end{align*}{}
+Where $A_{ij}$ is taking the determinant of a sub matrix where the $i,j$ row and column respectively are excluded. With this we get the following:
+\begin{equation*}
+    A^{-1}=\frac{1}{\det(A)}adj(A)
+\end{equation*}{}
+
+\section{EigenStuff and Diagonalization}
+In this section we will deal with eigenvalues, eigenvectors, and diagonalization. A diagonal matrix is one where there are only entries in the diagonals of the matrix. We know if a matrix is diagonizable if it is similar to a diagonal matrix, that is it satisfies the similar property of $A=SDS^{-1}$. It is also diagonizable only when there is a basis $\vec{v_1},...,\vec{v_n}$ so that $A\vec{v_1}=\lambda_i\vec{v_i}$
+
+
+\subsection{Finding Eigenvalue and Eigenvectors}
+To find the Eigenvalues associated with a matrix, solve this equation for lambda
+\begin{equation*}
+    det(A-\lambda I_n)=0
+\end{equation*}{}
+This will give you all of the eigenvalues the matrix has. The number of times an eigenvalue is repeated is the \textbf{algebraic multiplicity or $almu(\lambda)$}.With this you can find the eigenvectors by solving the equation for the vector $\vec{v}$.
+
+\begin{equation*}
+    (A-\lambda I_n)\vec{v}=\vec{0}
+\end{equation*}{}
+
+What you are solving for here is the eigenspace of the eigenvalue. The eigenspace consists of the kernel of $a-\lambda I_n$. The dimension of the eigenspace for a specific value is known as the geometric multiplicity of the eigenvalue or $gemu(\lambda)$. 
+
+You can find out if a matrix is diagonizable if the matrix has $n$ eigenvectors in the aggregate eigenbasis. This also means the aggregate $gemu(A)$ and $almu(A)$ are equal. The aggregate $gemu$ simply counting all of the eigenvectors in all of the eigenvectors for all eigenvalues. The aggregate for the $almu$ is the sum total of all the $almu$ for all the eigenvalues.
+
+Once you find all of this, you can construct the diagonal matrix by simply putting all of the eigenvalues in the diagonals of the matrix. The matrix has be the same dimensions as the original matrix.You can also find $S$ from the equation: $A=SDS^{-1}$, by plugging in the eigenvectors corresponding to the eigenvalue you placed in the diagonalized matrix
+
+Some interesting properties about similar matrices $A$ and $B$:
+\begin{itemize}
+    \item $A$ and $B$ have the same characteristic polynomial:$f_A(\lambda)=f_b(\lambda)$
+    The characteristic polynomial is the polynomial given when solving for the eigenvalues.This is given by the equation below:
+    \begin{equation*}
+        \lambda^2-trace(A)(-\lambda)^{k-1}+...+det(A)
+    \end{equation*}{}
+    Where $n$ is the number of rows or columns in the square matrix and $k$ is the geometric multiplicity of the eigenvalue.
+    \item  $A$ and $B$ have the same eigenvalues, with the same algebraic and geometric multiplicities, but they might not have the same eigenvectors
+    \item $rank(A)=rank(B)$ and thus the nullities are the same as well!
+    \item $A$ and $B$ have the same determinant and trace.
+\end{itemize}{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{multicols}
+
+\end{document}
